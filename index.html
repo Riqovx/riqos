@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Valentine's Day</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9c7d4; /* Soft pink background */
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Flower animation */
+        .flower {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            color: #e74c3c;
+            opacity: 0;
+            animation: flowerPop 5.5s ease-in-out forwards; /* Adjusted flower pop duration to 5.5s */
+        }
+
+        @keyframes flowerPop {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        /* Hearts floating animation */
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            animation: floatHearts 6s infinite;
+            opacity: 0;
+            animation-delay: 1s;
+        }
+
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(100px) scale(1);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-150px) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100px) scale(1);
+            }
+        }
+
+        /* Bubbles animation */
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: floatBubbles 8s infinite;
+        }
+
+        @keyframes floatBubbles {
+            0% {
+                bottom: -50px;
+                transform: scale(0.8);
+            }
+            50% {
+                bottom: 90%;
+                transform: scale(1.5);
+            }
+            100% {
+                bottom: -50px;
+                transform: scale(0.8);
+            }
+        }
+
+        /* Dialog Box */
+        .dialog-box {
+            display: none; /* Initially hidden */
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 400px;
+            animation: fadeInDialog 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeInDialog {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            color: #e74c3c;
+            font-size: 32px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+
+        .no-button {
+            background-color: #8e44ad;
+        }
+
+        .no-button:hover {
+            background-color: #732d91;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Flower Animation -->
+    <div class="flower">💐</div>
+
+    <!-- Dialog Box -->
+    <div class="dialog-box" id="dialogBox">
+        <h1>Riqo's Valentine's Day Proposal!</h1>
+        <p>Would you like to continue?</p>
+        <button id="yesBtn">Yes</button>
+        <button class="no-button" id="noBtn">No</button>
+    </div>
+
+    <!-- Floating Hearts -->
+    <div class="heart" style="left: 10%; animation-duration: 6s; animation-delay: 1s;">❤️</div>
+    <div class="heart" style="left: 30%; animation-duration: 7s; animation-delay: 2s;">❤️</div>
+    <div class="heart" style="left: 50%; animation-duration: 8s; animation-delay: 3s;">❤️</div>
+    <div class="heart" style="left: 70%; animation-duration: 9s; animation-delay: 4s;">❤️</div>
+    <div class="heart" style="left: 90%; animation-duration: 10s; animation-delay: 5s;">❤️</div>
+
+    <!-- Bubbles -->
+    <div class="bubble" style="left: 10%; animation-duration: 7s; animation-delay: 1s;"></div>
+    <div class="bubble" style="left: 30%; animation-duration: 8s; animation-delay: 2s;"></div>
+    <div class="bubble" style="left: 50%; animation-duration: 6s; animation-delay: 3s;"></div>
+    <div class="bubble" style="left: 70%; animation-duration: 9s; animation-delay: 4s;"></div>
+    <div class="bubble" style="left: 90%; animation-duration: 7s; animation-delay: 5s;"></div>
+
+    <script>
+        // Show the dialog box after the flower animation
+        setTimeout(function() {
+            document.getElementById('dialogBox').style.display = 'block';
+        }, 5500); // 5500ms = 5.5 seconds (this matches the flower animation duration)
+
+        // When "Yes" is clicked, redirect to the proposal page
+        document.getElementById('yesBtn').addEventListener('click', function() {
+            window.location.href = "main.html";  // Redirect to your proposal page
+        });
+
+        // When "No" is clicked, show an alert and refresh the page
+        document.getElementById('noBtn').addEventListener('click', function() {
+            alert("No worries, maybe next time! ❤️");
+            location.reload();  // Refresh the page
+        });
+    </script>
+
+</body>
+</html>

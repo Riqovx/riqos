@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Proposal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9c7d4; /* Soft pink background */
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Heart Animation */
+        .heart {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            font-size: 100px;
+            color: #e74c3c;
+            transform: translate(-50%, -50%);
+            animation: heartAnimation 7s ease-in-out forwards; /* 7s duration */
+            opacity: 1;
+        }
+
+        @keyframes heartAnimation {
+            0% {
+                font-size: 50px;
+                opacity: 1;
+            }
+            50% {
+                font-size: 120px;
+                opacity: 0.6;
+            }
+            100% {
+                font-size: 0;
+                opacity: 0;
+            }
+        }
+
+        /* Floating small hearts outside container */
+        .floating-heart {
+            position: absolute;
+            font-size: 30px;
+            color: #e74c3c;
+            animation: floatHearts 10s infinite;
+        }
+
+        @keyframes floatHearts {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(100px) translateY(-100px);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateX(-100px) translateY(-200px);
+                opacity: 0;
+            }
+        }
+
+        /* Floating bubbles */
+        .bubble {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            animation: floatBubbles 10s infinite;
+        }
+
+        @keyframes floatBubbles {
+            0% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            display: none; /* Initially hidden */
+            background-color: #f9c7d4; 
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 80%;
+            max-width: 500px;
+            animation: fadeIn 1s ease-in-out forwards;
+            border: 2px solid transparent; /* Transparent border for smoother outline */
+            position: relative; /* To position the floating hearts inside the container */
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            color: #e74c3c;
+            font-size: 36px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            position: relative;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+
+        .no-button {
+            background-color: #8e44ad;
+        }
+
+        .no-button:hover {
+            background-color: #732d91;
+        }
+
+        /* Additional small hearts effect inside the container */
+        .container .floating-heart {
+            font-size: 20px; /* Smaller hearts inside the container */
+            animation: floatHearts 10s infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Heart Animation -->
+    <div class="heart">❤️</div>
+
+    <!-- Floating small hearts outside container -->
+    <div class="floating-heart" style="left: 10%; animation-delay: 0s;">❤️</div>
+    <div class="floating-heart" style="left: 30%; animation-delay: 2s;">❤️</div>
+    <div class="floating-heart" style="left: 50%; animation-delay: 4s;">❤️</div>
+    <div class="floating-heart" style="left: 70%; animation-delay: 1s;">❤️</div>
+    <div class="floating-heart" style="left: 90%; animation-delay: 3s;">❤️</div>
+    <!-- Additional hearts outside container -->
+    <div class="floating-heart" style="left: 20%; animation-delay: 0s;">❤️</div>
+    <div class="floating-heart" style="left: 40%; animation-delay: 3s;">❤️</div>
+    <div class="floating-heart" style="left: 60%; animation-delay: 1s;">❤️</div>
+    <div class="floating-heart" style="left: 80%; animation-delay: 2s;">❤️</div>
+    <div class="floating-heart" style="left: 95%; animation-delay: 4s;">❤️</div>
+
+    <!-- Floating bubbles -->
+    <div class="bubble" style="left: 10%; animation-duration: 12s;"></div>
+    <div class="bubble" style="left: 20%; animation-duration: 8s;"></div>
+    <div class="bubble" style="left: 40%; animation-duration: 10s;"></div>
+    <div class="bubble" style="left: 60%; animation-duration: 7s;"></div>
+    <div class="bubble" style="left: 80%; animation-duration: 9s;"></div>
+
+    <!-- Main Proposal Container -->
+    <div class="container" id="proposalContainer">
+        <h1>Heyy Princess will You Be My Valentine?</h1>
+        <p>I've been thinking about this for a while... You make every day special just by being you.</p>
+        <p>And with Valentine's Day around the corner,I couldn't imagine spending it with anyone else.</p>
+        <p>So, what do you say?</p>
+
+        <form id="proposalForm">
+            <button type="button" onclick="showYesConfirmation()">Yes😁</button>
+            <button type="button" class="no-button" id="noButton" onclick="moveNoButton()">No😢</button>
+        </form>
+
+        <!-- Floating hearts inside the container -->
+        <div class="floating-heart" style="left: 10%; top: 10%; animation-delay: 0s;">❤️</div>
+        <div class="floating-heart" style="left: 40%; top: 30%; animation-delay: 2s;">❤️</div>
+        <div class="floating-heart" style="left: 70%; top: 50%; animation-delay: 4s;">❤️</div>
+        <div class="floating-heart" style="left: 30%; top: 70%; animation-delay: 1s;">❤️</div>
+        <div class="floating-heart" style="left: 60%; top: 80%; animation-delay: 3s;">❤️</div>
+        <!-- Additional hearts inside the container -->
+        <div class="floating-heart" style="left: 15%; top: 40%; animation-delay: 3s;">❤️</div>
+        <div class="floating-heart" style="left: 50%; top: 20%; animation-delay: 0s;">❤️</div>
+        <div class="floating-heart" style="left: 85%; top: 10%; animation-delay: 2s;">❤️</div>
+        <div class="floating-heart" style="left: 25%; top: 60%; animation-delay: 4s;">❤️</div>
+        <div class="floating-heart" style="left: 75%; top: 50%; animation-delay: 1s;">❤️</div>
+    </div>
+
+    <script>
+        // Wait for animation to finish, then show the main proposal container
+        setTimeout(function() {
+            document.querySelector('.container').style.display = 'block';
+        }, 2000); // 2000ms = 2 seconds (this matches the heart animation duration)
+
+        // Display confirmation when "Yes" button is clicked
+        function showYesConfirmation() {
+            // Redirect to a different page
+            window.location.href = "confirm.html";  // Replace with the desired URL
+        }
+
+        // Move the "No" button to a random position when clicked
+        function moveNoButton() {
+            var button = document.getElementById('noButton');
+            var maxWidth = window.innerWidth - button.offsetWidth;
+            var maxHeight = window.innerHeight - button.offsetHeight;
+
+            var randomX = Math.random() * maxWidth;
+            var randomY = Math.random() * maxHeight;
+
+            button.style.position = 'absolute';
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
+        }
+    </script>
+
+</body>
+</html>
